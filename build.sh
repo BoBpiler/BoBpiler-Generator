@@ -1,6 +1,9 @@
 #csmith build
+sudo apt-get update
+sudo apt-get install libnlohmann-json-dev
+
 cd csmith_forkserver
-apt install g++ cmake m4
+sudo apt install g++ cmake m4
 cmake -DCMAKE_INSTALL_PREFIX=./ .
 make && make install
 cd ..
