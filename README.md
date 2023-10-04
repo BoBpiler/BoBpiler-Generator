@@ -10,3 +10,4 @@ chmod +x ./build.sh
 mkdir tmp && cd tmp
 python3 ../main.py
 ```
+깜빡하고 안넣었는데 csmith와 yarpgen 디렉토리에 들어가서 git checkout으로 브랜치를 변경해줘야한다. 
