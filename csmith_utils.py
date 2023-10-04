@@ -80,4 +80,4 @@ csmith_options = [
 ]
 
 # 절대경로
-csmith_executable = "csmith"
+csmith_executable = "csmith_forkserver"

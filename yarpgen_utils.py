@@ -57,4 +57,4 @@ def yarpgen_json(file):
 #Yarpgen 옵션들
 yarpgen_options = ["--std=c", "--mutate=all"]
 
-yarpgen_executable = "yarpgen" #각자 경로 설정
+yarpgen_executable = "yarpgen_forkserver" #각자 경로 설정
