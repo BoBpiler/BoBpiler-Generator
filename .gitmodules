@@ -1,0 +1,3 @@
+[submodule "yarpgen_forkserver"]
+	path = yarpgen_forkserver
+	url = https://github.com/BoBpiler/BoBpiler_yarpgen.git
