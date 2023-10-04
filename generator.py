@@ -5,20 +5,23 @@ import time
 import queue
 import os
 
+
+# generator server와 handshake
 def generator_handshake(p):
-    pay = p.stdout.readline()  # 읽은 내용의 양 끝 공백 제거
+    pay = p.stdout.readline() 
     if pay != "[+] generator client hello\n":
         print("[!] generator client hello failed")
         exit(1)
     p.stdin.write("[+] generator server hello\n")
     p.stdin.flush()
-    pay = p.stdout.readline()  # 읽은 내용의 양 끝 공백 제거
+    pay = p.stdout.readline()  
     if pay != "[+] done\n":
         print("[!] generator server hello failed")
         exit(1)
     print("[+] generator handshake done!")
     p.stdin.flush()
 
+# generator clinet가 수행할 코드
 def generator_clinet(p, generator, code_gen_queue):
     while True:
         current_size = code_gen_queue.qsize()

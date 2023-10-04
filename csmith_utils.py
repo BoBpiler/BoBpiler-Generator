@@ -23,7 +23,7 @@ def csmith_todo(p, code_gen_queue):
     
     seed = random.randint(1, 1000)
     input_seed = file_path + "|" + str(seed)
-    p.stdin.write(input_seed + '\n') # 표준 입력 스트림에 값 쓰기
+    p.stdin.write(input_seed + '\n')
     p.stdin.flush()
 
     # 서버로부터의 응답 읽기 (필요에 따라 추가 코드 작성)
@@ -79,4 +79,5 @@ csmith_options = [
     '--inline-function-prob', '50'
 ]
 
-csmith_executable = "/root/BoBpiler/BoBpiler_csmith/bin/csmith" #각자 경로 설정
+# 절대경로
+csmith_executable = "csmith"

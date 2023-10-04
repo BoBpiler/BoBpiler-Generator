@@ -21,12 +21,12 @@ def yarpgen_todo(p, code_gen_queue):
     mutation_seed = random.randint(1, 1000) 
 
     input_seed = dir_path + "|" + str(seed) + "|" + str(mutation_seed)
-    p.stdin.write(input_seed + '\n') # 표준 입력 스트림에 값 쓰기
+    p.stdin.write(input_seed + '\n')
     p.stdin.flush()
 
     # 서버로부터의 응답 읽기 (필요에 따라 추가 코드 작성)
-    p.stdout.readline() #값 받고 버리기
-    p.stdout.readline() #값 받고 버리기
+    p.stdout.readline() 
+    p.stdout.readline() 
     json_yarpgen = p.stdout.readline()
 
     # JSON 데이터 파싱
@@ -57,4 +57,4 @@ def yarpgen_json(file):
 #Yarpgen 옵션들
 yarpgen_options = ["--std=c", "--mutate=all"]
 
-yarpgen_executable = "/root/BoBpiler/BoBpiler_yarpgen/build/yarpgen" #각자 경로 설정
+yarpgen_executable = "yarpgen" #각자 경로 설정
