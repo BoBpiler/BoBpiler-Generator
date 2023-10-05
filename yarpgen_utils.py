@@ -54,8 +54,5 @@ def yarpgen_json(file, _uuid):
 
 yarpgen_options = ["--std=c", "--mutate=all"]
 
-<<<<<<< HEAD
 yarpgen_executable = "yarpgen_forkserver" #각자 경로 설정
-=======
-yarpgen_executable = "yarpgen" 
->>>>>>> b5c4275 (GIMOZZI)
+

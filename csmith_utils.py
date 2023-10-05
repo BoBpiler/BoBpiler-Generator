@@ -75,9 +75,5 @@ csmith_options = [
     '--inline-function-prob', '50'
 ]
 
-<<<<<<< HEAD
-# 절대경로
 csmith_executable = "csmith_forkserver"
-=======
-csmith_executable = "csmith"
->>>>>>> b5c4275 (GIMOZZI)
+
