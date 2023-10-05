@@ -1,38 +1,18 @@
-import yarpgen_utils as y
+import multiprocessing
 import csmith_utils as c
-import io
-import time
+import yarpgen_utils as y
 import queue
-import os
 
+def gen_main(csmith_path, yarpgen_path):
 
-# generator server와 handshake
-def generator_handshake(p):
-    pay = p.stdout.readline() 
-    if pay != "[+] generator client hello\n":
-        print("[!] generator client hello failed")
-        exit(1)
-    p.stdin.write("[+] generator server hello\n")
-    p.stdin.flush()
-    pay = p.stdout.readline()  
-    if pay != "[+] done\n":
-        print("[!] generator server hello failed")
-        exit(1)
-    print("[+] generator handshake done!")
-    p.stdin.flush()
+    global code_gen_queue
+    code_gen_queue = multiprocessing.Queue(maxsize=1000)
 
-# generator clinet가 수행할 코드
-def generator_clinet(p, generator, code_gen_queue):
-    while True:
-        current_size = code_gen_queue.qsize()
-        if code_gen_queue.qsize() < 999:
-            if generator == "csmith": #시스미스일경우 실행
-                print(f"{generator} 넣을게~ 현재 큐의 크기: {current_size}")
-                c.csmith_todo(p, code_gen_queue)
-            elif generator == "yarpgen": # 야프젠일 경우 실행
-                print(f"{generator} 넣을게~ 현재 큐의 크기: {current_size}")
-                y.yarpgen_todo(p, code_gen_queue)
-        else: 
-            while code_gen_queue.qsize() >= 1000:
-                print("Queue is full. Waiting for space...")
-                time.sleep(60)  # 큐가 비어질 때까지 대기
+    csmith_process = multiprocessing.Process(target=c.run_csmith, args=(code_gen_queue, csmith_path, yarpgen_path))
+    yarpgen_process = multiprocessing.Process(target=y.run_yarpgen, args=(code_gen_queue, csmith_path, yarpgen_path))
+
+    csmith_process.start()
+    yarpgen_process.start()
+
+    csmith_process.join()
+    yarpgen_process.join()
