@@ -5,7 +5,7 @@
 cd csmith_forkserver
 sudo apt install g++ cmake m4
 cmake -DCMAKE_INSTALL_PREFIX=./ .
-make -j 4 && make install
+make -j 4
 cd ..
 
 #PATH 환경 변수에 등록된 디렉토리에 바이너리 넣기(경로없이 사용)
