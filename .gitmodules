@@ -1,6 +1,8 @@
 [submodule "yarpgen_forkserver"]
 	path = yarpgen_forkserver
 	url = https://github.com/BoBpiler/BoBpiler_yarpgen.git
+	branch = feat/yarpgen_forkserver
 [submodule "csmith_forkserver"]
 	path = csmith_forkserver
 	url = https://github.com/BoBpiler/BoBpiler_csmith.git
+	branch = feat/csmith_forkserver
