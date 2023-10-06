@@ -6,6 +6,7 @@ import queue
 import os
 
 def generator_handshake(p):
+    #BOBpiler 프로토콜
     pay = p.stdout.readline() 
     if pay != "[+] generator client hello\n":
         print("[!] generator client hello failed")
@@ -20,6 +21,7 @@ def generator_handshake(p):
     p.stdin.flush()
 
 def generator_clinet(p, generator, code_gen_queue, csmith_path, yarpgen_path):
+    #csmith or yarpgen forkserver와 통신하는 client 함수
     while True:
         current_size = code_gen_queue.qsize()
         if code_gen_queue.qsize() < 999:

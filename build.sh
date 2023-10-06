@@ -4,13 +4,15 @@
 
 cd csmith_forkserver
 sudo apt install g++ cmake m4
-cmake -DCMAKE_INSTALL_PREFIX=./ .
+cmake -S . -B build
+cd build
 make -j 4
-cd ..
+mv ./src/csmith ./
+cd ../../
 
 #PATH 환경 변수에 등록된 디렉토리에 바이너리 넣기(경로없이 사용)
-sudo cp $PWD/csmith_forkserver/bin/csmith /usr/local/bin/csmith_forkserver
-sudo cp $PWD/csmith_forkserver/bin/csmith /bin/csmith_forkserver
+sudo cp $PWD/csmith_forkserver/build/csmith /usr/local/bin/csmith_forkserver
+sudo cp $PWD/csmith_forkserver/build/csmith /bin/csmith_forkserver
 
 
 #yarpgen build
